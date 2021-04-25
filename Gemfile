@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'rake'
+gem 'sass'
+gem 'haml', '~> 3.0'
+gem 'padrino', '~> 0.10.5'
+gem 'json'
+gem 'therubyracer', '0.9.8'
+gem 'nokogiri'
+gem 'hexdump'

@@ -1,0 +1,113 @@
+= Installation
+
+JSDetox should work on most Linux distributions - major versions get
+tested on the current LTS version of Linux Mint / Ubuntu.
+
+
+== Installation on Linux Mint 17 LTS / Ubuntu 14.04 LTS:
+  sudo apt-get install git ruby ruby-dev bundler build-essential
+  cd #target-dir#
+  git clone https://github.com/svent/jsdetox.git
+  cd jsdetox
+  sudo bundle install
+  ./jsdetox
+
+== Installation with chruby and Ruby 2.1
+  # install ruby-install, see https://github.com/postmodern/ruby-install
+  wget -O ruby-install-0.4.3.tar.gz https://github.com/postmodern/ruby-install/archive/v0.4.3.tar.gz
+  tar -xzvf ruby-install-0.4.3.tar.gz
+  cd ruby-install-0.4.3/
+  sudo make install
+
+  # install ruby
+  ruby-install ruby 2.1
+
+  # install chruby, see https://github.com/postmodern/chruby#install
+  wget -O chruby-0.3.8.tar.gz https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
+  tar -xzvf chruby-0.3.8.tar.gz
+  cd chruby-0.3.8/
+  sudo make install
+
+  # load chruby by default
+  echo "source /usr/local/share/chruby/chruby.sh" >>~/.bashrc
+
+  # load chruby for the current session
+  source /usr/local/share/chruby/chruby.sh
+
+  # enable ruby 2.1
+  # needed every time when running JSDetox unless you enable auto switching:
+  # https://github.com/postmodern/chruby#auto-switching
+  chruby ruby-2.1
+
+  # install jsdetox
+  gem install bundler
+  cd #target-dir#
+  git clone https://github.com/svent/jsdetox.git
+  cd jsdetox
+  bundle install
+  ./jsdetox
+
+
+== Installation on Linux Mint 13 / Ubuntu 12.04:
+
+=== Installation with ruby 1.9 on clean image, no ruby installed yet:
+  sudo apt-get install ruby1.9.1 ruby1.9.1-dev libxslt1-dev libxml2-dev build-essential git
+  sudo gem install bundler
+  cd #target-dir#
+  git clone https://github.com/svent/jsdetox.git
+  cd jsdetox
+  sudo bundle install
+
+=== Installation with ruby 1.8 on clean image, no ruby installed yet:
+  sudo apt-get install rubygems libxslt1-dev libxml2-dev build-essential git
+  sudo gem install bundler
+  cd #target-dir#
+  git clone https://github.com/svent/jsdetox.git
+  cd jsdetox
+  sudo bundle install
+
+=== Used installation, system wide upgrade from ruby 1.8 to ruby 1.9
+  # Be careful, this might break other software already installed that
+  # depends on ruby 1.8
+  sudo apt-get install ruby1.9.1 ruby1.9.1-dev libxslt1-dev libxml2-dev build-essential git
+  # select ruby 1.9:
+  sudo update-alternatives --config ruby
+  # select ruby 1.9:
+  sudo update-alternatives --config gem
+  sudo gem install bundler
+  cd #target-dir#
+  git clone https://github.com/svent/jsdetox.git
+  cd jsdetox
+  sudo bundle install
+
+
+= Updating
+The master branch in the github repository is stable, so just run this to
+update to the latest version:
+  cd #jsdetox-dir#
+  git pull
+  sudo bundle install
+
+
+= Dependencies
+
+JSDetox is written in Ruby and compatible with version 1.8, 1.9 and 2.0.
+Ruby 1.9 and higher has a much better performance and should be used
+if possible.
+
+JSDetox has the following gem dependencies, managed with bundler:
+* rake
+* sass
+* haml
+* padrino
+* json
+* rkelly
+* therubyracer
+* nokogiri
+* hexdump
+
+The libraries metasm, taka and rkelly come bundled with JSDetox as there is no
+maintained gem of the latest version available.
+
+You should use a modern HTML 5 capable browser to access the web gui
+(chrome and firefox get tested).
