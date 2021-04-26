@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 gem 'sass'
-gem "haml", '>= 5.0.0'
+gem 'haml', '>= 5.0.0'
 gem 'padrino', '~> 0.10.5'
 gem 'json'
 gem 'therubyracer', '0.9.8'
